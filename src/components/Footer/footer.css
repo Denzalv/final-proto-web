@@ -1,0 +1,49 @@
+.orange {
+  color: orange;
+}
+
+#page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 70px 0;
+  background-color: #001e42;
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 15px;
+  word-spacing: 0.5em;
+}
+
+.foot-left {
+  padding: 10px 10%;
+}
+.foot-left img {
+  width: 100%;
+  max-width: 180px;
+}
+.foot-left a {
+  display: flex;
+  padding: 5px 0;
+  text-decoration: none;
+}
+
+.foot-mid {
+  padding: 10px 10%;
+}
+
+.foot-right {
+  padding: 10px 10%;
+}
+.foot-right p {
+  padding-bottom: 40px;
+}
+
+.foot-right img {
+  width: 100%;
+  max-width: 30px;
+}
+
+.foot-right li {
+  display: inline;
+  list-style-type: none;
+}

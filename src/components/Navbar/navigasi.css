@@ -1,0 +1,37 @@
+header {
+  display: inline;
+}
+
+nav {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  background-color: white;
+  padding: 15px 5%;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+}
+
+nav img {
+  width: 100%;
+  max-width: 120px;
+}
+
+nav li {
+  display: inline;
+  list-style-type: none;
+  margin-right: 20px;
+}
+
+nav a {
+  font-size: 1em;
+  font-weight: 400;
+  text-decoration: none;
+  color: black;
+}
+
+nav a:hover {
+  font-weight: bold;
+  color: #016699;
+}

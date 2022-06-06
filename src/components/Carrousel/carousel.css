@@ -1,0 +1,38 @@
+body {
+  background-color: #ffffff;
+}
+
+.orange {
+  color: orange;
+}
+
+.container {
+  display: inline;
+  width: 90%;
+  height: 100px;
+}
+
+.carousel-text {
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  padding-bottom: 20px;
+}
+
+.carousel-img {
+  margin: 0 0 0 270px;
+  overflow: hidden;
+}
+
+.slick-slide {
+  height: 190px;
+  box-sizing: border-box;
+}
+
+.slick-slide img {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 150px;
+}

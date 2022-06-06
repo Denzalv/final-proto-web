@@ -1,0 +1,17 @@
+.demo {
+  background-color: #016699;
+	padding: 10px 0;
+	color: #ffffff;
+	margin-bottom: 40px;
+}
+
+.demo-text {
+	display: flex;
+  justify-content: center;
+}
+
+.demo-vid {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 40px;
+}
