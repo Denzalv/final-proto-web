@@ -62,25 +62,17 @@ const MainComp = () => {
         `https://talentlyca-db-default-rtdb.asia-southeast1.firebasedatabase.app/inferences/${user.uid}.json`
       )
       .then((res) => {
-        setLoading(false);
         console.log(res.data);
         setResponse(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         setLoading(false);
         console.log(err);
       });
   }, []);
-  // console.log(result)
-  return (
-    // <div className='max-w-[600px] mx-auto my-16 p-4'>
-    //   <h1 className='text-2xl font-bold py-4'>Account</h1>
-    //   <p>User Email: {user && user.email}</p>
 
-    //   <button onClick={handleLogout} className='border px-6 py-2 my-4'>
-    //     Logout
-    //   </button>
-    // </div>
+  return (
     <>
       <h1 className="title"> CV Extraction </h1>
       <div id="upload">
@@ -119,51 +111,39 @@ const MainComp = () => {
 
             <h1>Result</h1>
             <h2>Experiences</h2>
-            {/* {loading ? (<img src={LoadingImage} alt="loading" /> ) : (response.map((item, idx) =>
-        <ul>
-          <li key={idx}>{item.experiences}</li>
-        </ul>
+            {/* {loading ? (
+              <img src={LoadingImage} alt="loading" />
+            ) : (
+              Object.values(response.experiences)?.map((item, index) => (
+                <ul>
+                  <li>{item}</li>
+                </ul>
+              ))
+            )} */}
+            {Object.values(response.experiences)?.map((item, index) => {
+              return (
+                <ul>
+                  <li>{item}</li>
+                </ul>
+              );
+            })}
 
-        ))} */}
-
-            <ul>
-              <li>{response.experiences[0]}</li>
-              <li>{response.experiences[1]}</li>
-              <li>{response.experiences[2]}</li>
-              <li>{response.experiences[3]}</li>
-            </ul>
             <h2>Skills</h2>
-            <ul>
-              <li>{response.skills[0]}</li>
-              <li>{response.skills[1]}</li>
-              <li>{response.skills[2]}</li>
-              <li>{response.skills[3]}</li>
-              <li>{response.skills[4]}</li>
-              <li>{response.skills[5]}</li>
-              <li>{response.skills[6]}</li>
-              <li>{response.skills[7]}</li>
-              <li>{response.skills[8]}</li>
-              <li>{response.skills[9]}</li>
-              <li>{response.skills[10]}</li>
-              <li>{response.skills[11]}</li>
-              <li>{response.skills[12]}</li>
-              <li>{response.skills[13]}</li>
-              <li>{response.skills[14]}</li>
-              <li>{response.skills[15]}</li>
-              <li>{response.skills[16]}</li>
-            </ul>
-            <button className="btn-logout" onClick={handleLogout}>Log out</button>
+            {Object.values(response.skills)?.map((item, index) => {
+              return (
+                <ul>
+                  <li>{item}</li>
+                </ul>
+              );
+            })}
+
+            <button className="btn-logout" onClick={handleLogout}>
+              Log out
+            </button>
             {/*  */}
           </div>
         </div>
       </div>
-      {/* <div>
-        <h1>Result</h1>
-        <h2>experience</h2>
-        <p>{response.experiences}</p>
-        <h2>Skills</h2>
-        <p>{response.skills}</p>
-      </div> */}
     </>
   );
 };
