@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
+import googleLogo from "../../assets/images/google/logo.png";
+import imagesignin from "../../assets/images/signin/signin-img.jpg";
+import "./signin.css";
 
-const Signin = () => {
+const SigninComp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -30,50 +33,66 @@ const Signin = () => {
   };
   useEffect(() => {
     if (user != null) {
-      navigate('/main')
+      navigate("/main");
     }
-  }, [user])
+  }, [user]);
 
   return (
-    <div className="max-w-[700px] mx-auto my-16 p-4">
-      <div>
-        <h1 className="text-2xl font-bold py-2">Sign in to your account</h1>
-        <p className="py-2">
-          Don't have an account yet?{" "}
-          <Link to="/signup" className="underline">
-            Sign up.
-          </Link>
-        </p>
+    <>
+      <div id="signin" className="card">
+        <section className="signin-text">
+          <p className="first">
+            {" "}
+            Don't have any account?{" "}
+            <span>
+              <Link to="/signup" className="link">
+                Sign Up
+              </Link>
+            </span>
+          </p>
+          <h1> Login </h1>
+          <form onSubmit={handleSubmit}>
+            <p> Email </p>
+            <div className="box-signin">
+              <input
+                placeholder="Email"
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <p> Password </p>
+            <div className="box-signin">
+              <input
+                placeholder="Password"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <button type="submit" className="btn-signin">
+              Sign In
+            </button>
+          </form>
+
+          <div>
+            <span>
+              <p className="forget">Forgot Password?</p>
+            </span>
+          </div>
+          <p> Or </p>
+
+          <div className="actions">
+            <button className="btn btn-google" onClick={handleGoogleSignIn}>
+              <img className="icon" src={googleLogo} alt="googlelogo" />
+              <span className="icon-text">Sign in with Google </span>
+            </button>
+          </div>
+        </section>
+        <section className="signin-img">
+          <img src={imagesignin} alt="signin" />
+        </section>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-col py-2">
-          <label className="py-2 font-medium">Email Address</label>
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            className="border p-3"
-            type="email"
-          />
-        </div>
-        <div className="flex flex-col py-2">
-          <label className="py-2 font-medium">Password</label>
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            className="border p-3"
-            type="password"
-          />
-        </div>
-        <button className="border border-blue-500 bg-blue-600 hover:bg-blue-500 w-full p-4 my-2 text-white">
-          Sign In
-        </button>
-      </form>
-      <div className="actions">
-        <button className="btn btn-google" onClick={handleGoogleSignIn}>
-          {/* <img className="icon" src={googleLogo} alt="googlelogo" />
-              <span className="icon-text">Sign in with Google </span> */}
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 
-export default Signin;
+export default SigninComp;

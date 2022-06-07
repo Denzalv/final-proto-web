@@ -1,0 +1,69 @@
+#signup {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 5%;
+  overflow: auto;
+  /* padding-bottom: 30px; */
+  margin-bottom: 40px;
+}
+
+.signup-text {
+  padding: 0 60px;
+  color: #080000;
+  margin-top: 3%;
+  margin-left: 20px;
+}
+
+.signup-img {
+  padding: 0 100px;
+}
+
+.signup-img img {
+  width: 100%;
+  max-width: 650px;
+  margin: 40px;
+}
+
+.box-signup input {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  background: none;
+  border-radius: 10px;
+}
+
+.btn-signup {
+  width: 30%;
+  height: 40px;
+  border-radius: 30px;
+  border: 10px;
+  cursor: pointer;
+  color: white;
+  background-color: #4281f8;
+  margin-top: 20px;
+}
+
+.btn-google {
+  border-radius: 10px;
+  cursor: pointer;
+  border-color: white;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+.first {
+  font-size: 15px;
+}

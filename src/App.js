@@ -1,11 +1,12 @@
-import React from 'react';
-import Signin from './components/signIn/Signin';
-import Signup from './components/signUp/Signup';
-import Account from './components/Main/Main';
-import { Route, Routes } from 'react-router-dom';
-import { AuthContextProvider } from './context/AuthContext';
-import ProtectedRoute from './components/hoc/ProtectedRoute';
-import LandingPage from './Pages/landingPage';
+import React from "react";
+import Signin from "./Pages/SignIn";
+import Signup from "./Pages/Signup";
+import { Route, Routes } from "react-router-dom";
+import { AuthContextProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/hoc/ProtectedRoute";
+import LandingPage from "./Pages/landingPage";
+import Main from "./Pages/MainPage";
+import ResultPage from "./Pages/ResultPage";
 
 function App() {
   return (
@@ -13,13 +14,21 @@ function App() {
       <AuthContextProvider>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path='/signin' element={<Signin />} />
-          <Route path='/signup' element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/signup" element={<Signup />} />
           <Route
-            path='/main'
+            path="/main"
             element={
               <ProtectedRoute>
-                <Account />
+                <Main />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/result"
+            element={
+              <ProtectedRoute>
+                <ResultPage />
               </ProtectedRoute>
             }
           />
