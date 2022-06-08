@@ -1,27 +1,27 @@
 import axios from "axios";
-import { React, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { React } from "react";
+import { Link } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import uploadpng from "../../assets/images/uploadcv/upload.png";
 import "./main.css";
-import LoadingImage from "../../assets/images/Loading/loading.png";
+
 
 const MainComp = () => {
-  const { user, logout } = UserAuth();
-  const [response, setResponse] = useState([]);
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
+  const { user } = UserAuth();
+  // const [response, setResponse] = useState([]);
+  // const navigate = useNavigate();
+  // const [loading, setLoading] = useState(true);
   // const result = Object.values(response.experiences)
 
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate("/");
-      console.log("You are logged out");
-    } catch (e) {
-      console.log(e.message);
-    }
-  };
+  // const handleLogout = async () => {
+  //   try {
+  //     await logout();
+  //     navigate("/");
+  //     console.log("You are logged out");
+  //   } catch (e) {
+  //     console.log(e.message);
+  //   }
+  // };
 
   //Fetching API
   const UploadPdf = async (event) => {
@@ -56,22 +56,22 @@ const MainComp = () => {
     }
   };
 
-  useEffect(() => {
-    axios
-      .get(
-        `https://talentlyca-db-default-rtdb.asia-southeast1.firebasedatabase.app/inferences/${user.uid}.json`
-      )
-      .then((res) => {
-        console.log(res.data);
-        setResponse(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log(err);
-      });
-  }, []);
-
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `https://talentlyca-db-default-rtdb.asia-southeast1.firebasedatabase.app/inferences/${user.uid}.json`
+  //     )
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setResponse(res.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => {
+  //       setLoading(false);
+  //       console.log(err);
+  //     });
+  // }, []);
+  
   return (
     <>
       <h1 className="title"> CV Extraction </h1>
@@ -93,9 +93,9 @@ const MainComp = () => {
           </form>
         </section>
       </div>
-      {/* <div>
+      <div>
         <Link to="/result">Result Page</Link>
-      </div> */}
+      </div>
 
       {/* <div className="button">
         <ul className="right">
@@ -103,7 +103,7 @@ const MainComp = () => {
           <a href="#">Confirm</a>
         </ul>
       </div> */}
-      <div className="position">
+      {/* <div className="position">
         <div className="result-head">
           <div className="container-res">
             <h2>Name : {user.displayName}</h2>
@@ -111,15 +111,6 @@ const MainComp = () => {
 
             <h1>Result</h1>
             <h2>Experiences</h2>
-            {/* {loading ? (
-              <img src={LoadingImage} alt="loading" />
-            ) : (
-              Object.values(response.experiences)?.map((item, index) => (
-                <ul>
-                  <li>{item}</li>
-                </ul>
-              ))
-            )} */}
             {Object.values(response.experiences)?.map((item, index) => {
               return (
                 <ul>
@@ -140,10 +131,10 @@ const MainComp = () => {
             <button className="btn-logout" onClick={handleLogout}>
               Log out
             </button>
-            {/*  */}
+
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
