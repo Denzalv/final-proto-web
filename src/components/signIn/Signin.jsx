@@ -31,6 +31,13 @@ const SigninComp = () => {
       console.log(error);
     }
   };
+  const handleForgotPassword = async (e) => {
+    try {
+      await forgotPassword(email);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
   useEffect(() => {
     if (user != null) {
       navigate("/main");
@@ -75,7 +82,9 @@ const SigninComp = () => {
 
           <div>
             <span>
-              <p className="forget">Forgot Password?</p>
+              <p className="forget" onClick={handleForgotPassword}>
+                Forgot Password?
+              </p>
             </span>
           </div>
           <p> Or </p>

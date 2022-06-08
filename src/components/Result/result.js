@@ -51,43 +51,61 @@ const Result = () => {
   if (loading) {
     return (
       <div className="img-con">
-        <img className="img-load" src={LoadingImage} alt="loading" />
-        <p className="text-load">
-          .....please wait, we are extracting your cv.....
-        </p>
+        <div className="img-load">
+          <img src={LoadingImage} alt="loading" />
+        </div>
+        <div className="text-load">
+          <p>.....please wait, we are extracting your cv.....</p>
+        </div>
       </div>
     );
   }
 
   return (
     <>
-      <div>
+		<h1 className="center">Result</h1>
+      <div className="backg">
+				<div className="con-long">
+
+        <div className="conFis">
+          <div className="result-head2p">
+            <div className="rule">
+              <div className="img-conFis">
+                <img src="https://picsum.photos/200" />
+              </div>
+              <div className="text-conFis">
+                <h2 className="border-txt">Name : {user.displayName}</h2>
+                <h2 className="border-txt">Email : {user.email}</h2>
+              </div>
+
+              <button className="btn-logout" onClick={handleLogout}>
+                Log out
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div className="split">
+          <div className="position">
+            <div className="result-head">
+              <div className="container-res">
+                <h3>Experiences</h3>
+
+                {Object.values(response.experiences)?.map((item, index) => {
+                  return (
+                    <ul>
+                      <li>{item}</li>
+                    </ul>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="position">
           <div className="result-head">
             <div className="container-res">
-              <h2>Name : {user.displayName}</h2>
-              <h2>Email : {user.email}</h2>
-
-              <h1>Result</h1>
-              <h2>Experiences</h2>
-              {/* {loading ? (
-              <img src={LoadingImage} alt="loading" />
-            ) : (
-              Object.values(response.experiences)?.map((item, index) => (
-                <ul>
-                  <li>{item}</li>
-                </ul>
-              ))
-            )} */}
-              {Object.values(response.experiences)?.map((item, index) => {
-                return (
-                  <ul>
-                    <li>{item}</li>
-                  </ul>
-                );
-              })}
-
-              <h2>Skills</h2>
+              <h3>Skills</h3>
               {Object.values(response.skills)?.map((item, index) => {
                 return (
                   <ul>
@@ -95,15 +113,11 @@ const Result = () => {
                   </ul>
                 );
               })}
-
-              <button className="btn-logout" onClick={handleLogout}>
-                Log out
-              </button>
-              {/*  */}
             </div>
           </div>
         </div>
       </div>
+			</div>
     </>
   );
 };
