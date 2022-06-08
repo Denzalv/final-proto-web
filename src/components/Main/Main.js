@@ -5,23 +5,8 @@ import { UserAuth } from "../../context/AuthContext";
 import uploadpng from "../../assets/images/uploadcv/upload.png";
 import "./main.css";
 
-
 const MainComp = () => {
   const { user } = UserAuth();
-  // const [response, setResponse] = useState([]);
-  // const navigate = useNavigate();
-  // const [loading, setLoading] = useState(true);
-  // const result = Object.values(response.experiences)
-
-  // const handleLogout = async () => {
-  //   try {
-  //     await logout();
-  //     navigate("/");
-  //     console.log("You are logged out");
-  //   } catch (e) {
-  //     console.log(e.message);
-  //   }
-  // };
 
   //Fetching API
   const UploadPdf = async (event) => {
@@ -29,7 +14,6 @@ const MainComp = () => {
     const uuid = `${user.uid}`;
     console.log(uuid);
     const formData = {
-      // uid: uuid,
       file: filePdf,
     };
     console.log(formData);
@@ -45,10 +29,8 @@ const MainComp = () => {
       const response = await axios({
         method: "POST",
         url: `http://34.123.130.206:5000/api/v1/predict?uid=${uuid}`,
-        // { uid: uuid, file: filePdf }
         data: formData,
         headers: header,
-        // responseType: "json",
       });
       console.log(response);
     } catch (error) {
@@ -56,22 +38,6 @@ const MainComp = () => {
     }
   };
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://talentlyca-db-default-rtdb.asia-southeast1.firebasedatabase.app/inferences/${user.uid}.json`
-  //     )
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setResponse(res.data);
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => {
-  //       setLoading(false);
-  //       console.log(err);
-  //     });
-  // }, []);
-  
   return (
     <>
       <h1 className="title"> CV Extraction </h1>
@@ -83,18 +49,30 @@ const MainComp = () => {
           </div>
 
           <form>
+            <label className="btn-choose">
+              Choose File
             <input
-              className="btn-choose"
+            className="input-xx"
               type="file"
               name="file"
               accept="application/pdf"
               onChange={UploadPdf}
             />
+            </label>
           </form>
+          <p class="drop"> Please choose only PDF</p>
         </section>
       </div>
-      <div>
-        <Link to="/result">Result Page</Link>
+      <div className="btn-nav">
+        <Link to="/">
+          <button className="btn-left">Back</button>
+        </Link>
+
+        <Link to="/result">
+          <button className="btn-right">Confirm</button>
+        </Link>
+
+        
       </div>
 
       {/* <div className="button">
@@ -102,38 +80,6 @@ const MainComp = () => {
           <a href="#">Back</a>
           <a href="#">Confirm</a>
         </ul>
-      </div> */}
-      {/* <div className="position">
-        <div className="result-head">
-          <div className="container-res">
-            <h2>Name : {user.displayName}</h2>
-            <h2>Email : {user.email}</h2>
-
-            <h1>Result</h1>
-            <h2>Experiences</h2>
-            {Object.values(response.experiences)?.map((item, index) => {
-              return (
-                <ul>
-                  <li>{item}</li>
-                </ul>
-              );
-            })}
-
-            <h2>Skills</h2>
-            {Object.values(response.skills)?.map((item, index) => {
-              return (
-                <ul>
-                  <li>{item}</li>
-                </ul>
-              );
-            })}
-
-            <button className="btn-logout" onClick={handleLogout}>
-              Log out
-            </button>
-
-          </div>
-        </div>
       </div> */}
     </>
   );

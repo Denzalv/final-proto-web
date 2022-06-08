@@ -3,6 +3,7 @@ import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import LoadingImage from "../../assets/images/Loading/loading.png";
+import "./result.css";
 
 const Result = () => {
   const { user, logout } = UserAuth();
@@ -34,12 +35,28 @@ const Result = () => {
       console.log(e.message);
     }
   };
-	if (response === null) {
-		return <img src={LoadingImage} alt="loading" />;
-	}
+  if (response === null) {
+    return (
+      <div className="img-con">
+        <div className="img-load">
+          <img src={LoadingImage} alt="loading" />
+        </div>
+        <div className="text-load">
+          <p>.....please wait, we are extracting your cv.....</p>
+        </div>
+      </div>
+    );
+  }
 
   if (loading) {
-    return <img src={LoadingImage} alt="loading" />;
+    return (
+      <div className="img-con">
+        <img className="img-load" src={LoadingImage} alt="loading" />
+        <p className="text-load">
+          .....please wait, we are extracting your cv.....
+        </p>
+      </div>
+    );
   }
 
   return (
