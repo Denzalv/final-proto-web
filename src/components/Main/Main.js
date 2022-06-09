@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import uploadpng from "../../assets/images/uploadcv/upload.png";
 import "./main.css";
+import { data } from "autoprefixer";
 
 const MainComp = () => {
   const { user } = UserAuth();
+  
 
   //Fetching API
   const UploadPdf = async (event) => {
@@ -28,10 +30,10 @@ const MainComp = () => {
     try {
       const response = await axios({
         method: "POST",
-        url: `http://34.123.130.206:5000/api/v1/predict?uid=${uuid}`,
+        url: `https://api.entity24.tech:5000/api/v1/predict?uid=${uuid}`,
         data: formData,
         headers: header,
-      });
+      })
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -43,7 +45,7 @@ const MainComp = () => {
       <h1 className="title"> CV Extraction </h1>
       <div id="upload">
         <section className="container">
-          <h1> Upload PDF Here </h1>
+          <h1> Upload PDF Here</h1>
           <div className="image">
             <img src={uploadpng} alt="uploadlogo" />
           </div>
@@ -60,7 +62,7 @@ const MainComp = () => {
             />
             </label>
           </form>
-          <p class="drop"> Please choose only PDF</p>
+          <p className="drop"> Please choose only PDF</p>
         </section>
       </div>
       <div className="btn-nav">
