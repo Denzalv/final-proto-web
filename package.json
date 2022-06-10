@@ -7,6 +7,7 @@
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
     "axios": "^0.27.2",
+    "env-cmd": "^10.1.0",
     "firebase": "^9.6.10",
     "react": "18",
     "react-dom": "18",
@@ -19,6 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:micro": "env-cmd -f .env.micro react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
